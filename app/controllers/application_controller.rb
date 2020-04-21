@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include Credible::ApplicationController
+  include Credible::ControllerConcern
 
   before_action :render_application, if: proc { request.format.html? }
 
