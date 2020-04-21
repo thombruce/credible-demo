@@ -14,11 +14,10 @@ RSpec.describe "Authentication::Users", type: :system do
   it "allows signup" do
     visit "/signup"
 
-    fill_in "Name", :with => "John Smith"
     fill_in "Email", :with => "john.smith@example.com"
     fill_in "Password", :with => "Passw0rd123!"
     click_button "Sign up"
 
-    expect(page).to have_text("Workspaces")
+    expect(page).to have_text("CREDIBLE DEMO")
   end
 end

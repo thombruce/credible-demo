@@ -2,14 +2,7 @@ import Vue from 'vue/dist/vue.esm'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
-import settings from './settings'
-
 import authentication from './authentication'
-
-import workspaces from './workspaces'
-import users from './users'
-import templates from './templates'
-import entities from './entities'
 
 const state = () => ({
   packageVersion: process.env.PACKAGE_VERSION || '0'
@@ -38,12 +31,7 @@ const store = new Vuex.Store({
   getters,
   actions,
   modules: {
-    settings,
-    authentication,
-    workspaces,
-    users,
-    templates,
-    entities
+    authentication
   }
 })
 

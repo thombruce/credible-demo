@@ -29,19 +29,11 @@ gem 'rack-cors'
 gem 'credible', github: 'thombruce/credible', branch: 'master' # TODO: Investigate failure to load gem from GitHub in GitHub Actions
 gem 'warden' # TODO: Investigate. Currently fails without explicit inclusion.
 gem 'pundit'
-gem 'rolify'
 # Use JSON Web Tokens
 gem 'jwt'
 
-# Querying
-gem 'kaminari'
-
 # Presentation
 gem 'haml-rails'
-gem 'redcarpet'
-
-# Data Structure
-gem 'friendly_id', '5.2.3' # NOTE: https://github.com/norman/friendly_id/issues/912
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

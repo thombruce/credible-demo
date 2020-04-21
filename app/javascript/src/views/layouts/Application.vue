@@ -1,31 +1,9 @@
 <template lang="pug">
 v-app(:dark="$vuetify.theme.dark")
-  v-navigation-drawer(
-    v-model="drawer"
-    clipped
-    fixed
-    app
-  )
-    workspace-nav(v-if="currentWorkspace" :workspace="currentWorkspace")
-    v-list(v-else-if="workspaces")
-      v-list-item(v-for="workspace in workspaces" link :to="{ name: 'templates_path', params: { workspace_id: workspace.slug } }") {{ workspace.title }}
-      v-list-item(link :to="{ name: 'new_workspace_path' }")
-        v-list-item-content New Workspace
-        v-list-item-icon
-          v-icon mdi-plus
-    template(v-slot:append)
-      v-list-item(
-        @click.stop="$vuetify.theme.dark = !$vuetify.theme.dark"
-      )
-        v-list-item-action
-          v-icon mdi-{{ $vuetify.theme.dark ? 'eye' : 'eye-off' }}
-        v-list-item-title {{ $vuetify.theme.dark ? 'Light' : 'Dark' }} Mode
-      .pa-2(v-if="currentUser.admin")
-        v-btn(block :to="{ name: 'admin_path' }") Admin
   v-app-bar(clipped-left fixed app dark color="primary")
     v-app-bar-nav-icon(@click.stop="drawer = !drawer")
     v-btn(:to="{ name: 'root_path' }" text)
-      v-toolbar-title {{ settings ? settings.name : '...' }}
+      v-toolbar-title Credible Demo
     v-spacer
     span.mr-2
       strong Version
@@ -55,17 +33,7 @@ v-app(:dark="$vuetify.theme.dark")
 </template>
 
 <script>
-import Workspaces from '../../mixins/workspaces.js'
-
-import WorkspaceNav from '../workspaces/_nav.vue'
-
 export default {
-  mixins: [
-    Workspaces
-  ],
-  components: {
-    WorkspaceNav
-  },
   data() {
     return {
       drawer: null // [1]

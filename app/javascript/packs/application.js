@@ -30,8 +30,6 @@ Vue.component('application-layout', ApplicationLayout)
 Vue.component('authentication-layout', AuthenticationLayout)
 
 // Global Mixins
-import Settings from '../src/mixins/settings.js'
-Vue.mixin(Settings)
 import Session from '../src/mixins/session.js'
 Vue.mixin(Session)
 

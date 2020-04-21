@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/thombruce/credible.git
-  revision: aa8f4d141b4c0e17c98967369cbac30aaf60c4cd
+  revision: f6df45d7f36ce2f374bf7449b96fd200dc268dcd
   branch: master
   specs:
-    credible (0.6.0)
+    credible (0.7.0)
       pundit (~> 2.1.0)
       rails (~> 6.0.2, >= 6.0.2.2)
       warden (~> 1.2.8)
@@ -103,8 +103,6 @@ GEM
     faker (2.11.0)
       i18n (>= 1.6, < 2)
     ffi (1.12.2)
-    friendly_id (5.2.3)
-      activerecord (>= 4.0.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.1.2)
@@ -128,18 +126,6 @@ GEM
       activesupport (>= 5.0.0)
     json (2.3.0)
     jwt (2.2.1)
-    kaminari (1.2.0)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.2.0)
-      kaminari-activerecord (= 1.2.0)
-      kaminari-core (= 1.2.0)
-    kaminari-actionview (1.2.0)
-      actionview
-      kaminari-core (= 1.2.0)
-    kaminari-activerecord (1.2.0)
-      activerecord
-      kaminari-core (= 1.2.0)
-    kaminari-core (1.2.0)
     launchy (2.5.0)
       addressable (~> 2.7)
     letter_opener (1.7.0)
@@ -210,9 +196,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redcarpet (3.5.0)
     regexp_parser (1.7.0)
-    rolify (5.2.0)
     rspec-core (3.9.1)
       rspec-support (~> 3.9.1)
     rspec-expectations (3.9.1)
@@ -315,11 +299,9 @@ DEPENDENCIES
   credible!
   factory_bot_rails
   faker
-  friendly_id (= 5.2.3)
   haml-rails
   jbuilder (~> 2.7)
   jwt
-  kaminari
   letter_opener
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
@@ -327,8 +309,6 @@ DEPENDENCIES
   pundit
   rack-cors
   rails (~> 6.0.0)
-  redcarpet
-  rolify
   rspec-rails (~> 4.0.0.beta3)
   rubocop (~> 0.77.0)
   sass-rails (~> 5)

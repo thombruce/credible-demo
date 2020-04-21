@@ -58,7 +58,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "helvellyn_production"
+  # config.active_job.queue_name_prefix = "credible_production"
 
   config.action_mailer.perform_caching = false
 
@@ -76,7 +76,7 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
 
-  config.action_mailer.default_url_options = { host: 'helvellyn.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'credible-demo.herokuapp.com' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
