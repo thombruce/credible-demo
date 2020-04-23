@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/thombruce/credible.git
-  revision: fefb0b62d121745702428724fd423d4bcfb45c1e
+  revision: d3337fc520539026f3e7ccfa3391cb2ac9629750
   branch: master
   specs:
-    credible (0.9.1)
+    credible (0.11.0)
       bcrypt (~> 3.1.7)
       rails (~> 6.0.2, >= 6.0.2.2)
       warden (~> 1.2.8)
