@@ -12,10 +12,6 @@ export default {
     layout() {
       return (this.$route.meta.layout || default_layout) + '-layout'
     }
-  },
-  created() {
-    // See mixins/settings.js
-    this.fetchSettings()
   }
 }
 </script>
