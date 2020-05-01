@@ -1,12 +1,14 @@
 import axios from 'axios'
 
+import store from './store'
+
 // Default settings
 axios.defaults.baseURL = '/auth'
 axios.defaults.headers.common['Accept'] = 'application/json'
 
 // Interceptor Functions
 const requestInterceptor = (request) => {
-  let token = localStorage.getItem('user-token')
+  let token = store.state.tokens.accessToken
 
   if (token) {
     request.headers['Authorization'] = `Bearer ${ token }`
@@ -17,7 +19,7 @@ const requestInterceptor = (request) => {
 
 const responseErrorInterceptor = (error) => {
   if (error.response.status === 401) {
-    localStorage.removeItem('user-token')
+    localStorage.removeItem('refresh-token')
     window.location = '/login'
   } else {
     return Promise.reject(error)

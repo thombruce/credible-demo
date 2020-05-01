@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/thombruce/credible.git
-  revision: 3f177158f66aa2b1fa07aa8c689a742df87bde0a
+  revision: 1215a6e75033362e0ea66764c441a404ff3cbffa
   branch: refresh-tokens
   specs:
     credible (0.11.0)

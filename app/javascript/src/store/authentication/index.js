@@ -2,56 +2,53 @@ import { authAPI as axios } from '../../axios'
 
 import account from './account'
 
-const jwtDecode = require('jwt-decode')
-
-const state = () => ({
-  currentSession: {}
-})
-
 const actions = {
-  login({ state, commit }, payload) {
+  login({ dispatch, rootGetters }, payload) {
     return axios
       .post('/login', payload)
       .then((res) => {
-        if (res.data.jwt) {
-          localStorage.setItem('user-token', res.data.jwt)
-        }
-        commit('setSession', res.data.jwt)
-        return state.currentSession
+        let refreshToken = res.data.refresh_token,
+            accessToken = res.data.access_token
+
+        dispatch('tokens/create', { refreshToken, accessToken }, { root: true })
+
+        return rootGetters.tokens.currentSession
       })
       .catch((error) => {
         return Promise.reject(error.response.data)
       })
   },
-  signup({ state, commit }, payload) {
+  signup({ dispatch, rootGetters }, payload) {
     return axios
       .post('/signup', payload)
       .then((res) => {
-        if (res.data.jwt) {
-          localStorage.setItem('user-token', res.data.jwt)
-        }
-        commit('setSession', res.data.jwt)
-        return state.currentSession
+        let refreshToken = res.data.refresh_token,
+            accessToken = res.data.access_token
+
+        dispatch('tokens/create', { refreshToken, accessToken }, { root: true })
+
+        return rootGetters.tokens.currentSession
       })
       .catch((error) => {
         return Promise.reject(error.response.data)
       })
   },
-  confirm({ state, commit }, params) {
+  confirm({ dispatch, rootGetters }, params) {
     return axios
       .get('/confirm/' + params.confirmation_token, { params: { email: params.email } })
       .then((res) => {
-        if (res.data.jwt) {
-          localStorage.setItem('user-token', res.data.jwt)
-        }
-        commit('setSession', res.data.jwt)
-        return state.currentSession
+        let refreshToken = res.data.refresh_token,
+            accessToken = res.data.access_token
+
+        dispatch('tokens/create', { refreshToken, accessToken }, { root: true })
+
+        return rootGetters.tokens.currentSession
       })
       .catch((error) => {
         return Promise.reject(error.response.data)
       })
   },
-  resetPassword({ state, commit }, payload) {
+  resetPassword({}, payload) {
     return axios
       .post('/reset_password', payload)
       .then((res) => {
@@ -61,12 +58,12 @@ const actions = {
         return Promise.reject(error.response.data)
       })
   },
-  signout({ commit }) {
+  signout({ dispatch }) {
     return axios
       .delete('/signout')
       .then((res) => {
-        localStorage.removeItem('user-token')
-        commit('endSession')
+        dispatch('tokens/destroy', { root: true })
+        return true
       })
       .catch((error) => {
         console.log(error)
@@ -74,20 +71,9 @@ const actions = {
   }
 }
 
-const mutations = {
-  setSession(state, payload) {
-    state.currentSession = jwtDecode(payload).data
-  },
-  endSession(state) {
-    state.currentSession = {}
-  }
-}
-
 const authentication = {
   namespaced: true,
-  state,
   actions,
-  mutations,
   modules: {
     account
   }
