@@ -26,7 +26,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 
 # Auth
-gem 'credible', github: 'thombruce/credible', branch: 'master' # TODO: Investigate failure to load gem from GitHub in GitHub Actions
+gem 'credible', github: 'thombruce/credible', branch: 'refresh-tokens' # TODO: Investigate failure to load gem from GitHub in GitHub Actions
 gem 'warden' # TODO: Investigate. Currently fails without explicit inclusion.
 gem 'pundit'
 # Use JSON Web Tokens

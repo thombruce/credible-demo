@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/thombruce/credible.git
-  revision: 2b676b440467a402d65d17e3f1ff9799e822a88c
-  branch: master
+  revision: 1215a6e75033362e0ea66764c441a404ff3cbffa
+  branch: refresh-tokens
   specs:
     credible (0.11.0)
       bcrypt (~> 3.1.7)

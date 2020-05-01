@@ -2,6 +2,7 @@ import Vue from 'vue/dist/vue.esm'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
+import tokens from './tokens'
 import authentication from './authentication'
 
 const state = () => ({
@@ -31,6 +32,7 @@ const store = new Vuex.Store({
   getters,
   actions,
   modules: {
+    tokens,
     authentication
   }
 })
