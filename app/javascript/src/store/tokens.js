@@ -3,6 +3,7 @@ import { authAPI as axios } from '../axios'
 const jwtDecode = require('jwt-decode')
 
 const state = () => ({
+  sessionLoaded: false,
   refreshToken: null,
   accessToken: null
 })
@@ -25,12 +26,13 @@ const getters = {
 }
 
 const actions = {
-  init({ state, commit, dispatch }) {
+  async init({ state, commit, dispatch }) {
     let refreshToken = localStorage.getItem('refresh-token')
     if (refreshToken) {
       commit('insert', { refreshToken })
-      dispatch('refresh', refreshToken)
+      await dispatch('refresh', refreshToken)
     }
+    commit('finish')
     return state.accessToken
   },
   create({ state, commit }, { refreshToken, accessToken }) {
@@ -65,6 +67,9 @@ const mutations = {
   remove(state) {
     state.refreshToken = null
     state.accessToken = null
+  },
+  finish(state) {
+    state.sessionLoaded = true
   }
 }
 

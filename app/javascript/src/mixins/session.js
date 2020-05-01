@@ -1,5 +1,8 @@
 const session = {
   computed: {
+    sessionLoaded () {
+      return this.$store.state.tokens.sessionLoaded
+    },
     currentSession () {
       return this.$store.getters['tokens/currentSession']
     },
