@@ -1,7 +1,7 @@
 <template lang="pug">
   div
-    component(:is="layout")
-      router-view(v-if="sessionLoaded")
+    component(v-if="sessionLoaded" :is="layout")
+      router-view
 </template>
 
 <script>
