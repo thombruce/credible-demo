@@ -27,17 +27,18 @@ const getters = {
 
 const actions = {
   async init({ state, commit, dispatch }) {
-    let refreshToken = localStorage.getItem('refresh-token')
-    if (refreshToken) {
-      commit('insert', { refreshToken })
-      await dispatch('refresh', refreshToken)
-    }
+    await dispatch('refresh')
     commit('finish')
     return state.accessToken
   },
   create({ state, commit }, { refreshToken, accessToken }) {
     localStorage.setItem('refresh-token', refreshToken)
     commit('insert', { refreshToken, accessToken })
+
+    setTimeout(() => {
+      dispatch('refresh')
+    }, 12600000) // 3.5 hours - TODO: Use exp value provided by accessToken
+
     return state.accessToken
   },
   destroy({ commit }) {
@@ -45,17 +46,26 @@ const actions = {
     commit('remove')
     return true
   },
-  refresh({ state, commit }, refreshToken) {
-    return axios
-      .post('/refresh', { refresh_token: refreshToken })
-      .then((res) => {
-        localStorage.setItem('refresh-token', res.data.refresh_token)
-        commit('insert', { refreshToken: res.data.refresh_token, accessToken: res.data.access_token })
-        return state.accessToken
-      })
-      .catch((error) => {
-        return Promise.reject(error.response.data)
-      })
+  refresh({ state, commit }) {
+    let refreshToken = localStorage.getItem('refresh-token')
+
+    if (refreshToken) {
+      return axios
+        .post('/refresh', { refresh_token: refreshToken })
+        .then((res) => {
+          localStorage.setItem('refresh-token', res.data.refresh_token)
+          commit('insert', { refreshToken: res.data.refresh_token, accessToken: res.data.access_token })
+
+          setTimeout(() => {
+            dispatch('refresh')
+          }, 12600000) // 3.5 hours - TODO: Use exp value provided by accessToken
+
+          return state.accessToken
+        })
+        .catch((error) => {
+          return Promise.reject(error.response.data)
+        })
+    }
   }
 }
 
