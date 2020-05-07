@@ -31,7 +31,7 @@ const actions = {
     commit('finish')
     return state.accessToken
   },
-  create({ state, commit }, { refreshToken, accessToken }) {
+  create({ state, commit, dispatch }, { refreshToken, accessToken }) {
     localStorage.setItem('refresh-token', refreshToken)
     commit('insert', { refreshToken, accessToken })
 
@@ -46,7 +46,7 @@ const actions = {
     commit('remove')
     return true
   },
-  refresh({ state, commit }) {
+  refresh({ state, commit, dispatch }) {
     let refreshToken = localStorage.getItem('refresh-token')
 
     if (refreshToken) {
