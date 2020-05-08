@@ -27,10 +27,20 @@ const actions = {
   }
 }
 
+const refreshSessionPlugin = (store) => {
+  store.subscribeAction((action, state) => {
+    if (!['tokens/refresh', 'tokens/forceRefresh'].includes(action.type)) {
+      console.log(action.type)
+      store.dispatch('tokens/refresh', null, { root: true })
+    }
+  })
+}
+
 const store = new Vuex.Store({
   state,
   getters,
   actions,
+  plugins: [refreshSessionPlugin],
   modules: {
     tokens,
     authentication
