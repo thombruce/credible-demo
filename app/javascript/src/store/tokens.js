@@ -1,4 +1,4 @@
-import { authAPI as axios } from '../../axios'
+import { authAPI as axios } from '../axios'
 
 const jwtDecode = require('jwt-decode')
 
