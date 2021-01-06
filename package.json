@@ -7,7 +7,7 @@
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.2.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "deepmerge": "^4.2.2",
     "fibers": "^4.0.2",
     "jwt-decode": "^2.2.0",
