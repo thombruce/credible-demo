@@ -11,7 +11,7 @@
     "deepmerge": "^4.2.2",
     "fibers": "^4.0.2",
     "jwt-decode": "^2.2.0",
-    "pug": "2.0.3",
+    "pug": "3.0.1",
     "pug-plain-loader": "^1.0.0",
     "sass": "^1.26.2",
     "sass-loader": "^8.0.2",
